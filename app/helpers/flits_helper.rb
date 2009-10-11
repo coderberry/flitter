@@ -1,0 +1,2 @@
+module FlitsHelper
+end

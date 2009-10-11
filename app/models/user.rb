@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  is_gravtastic :size => 50
+  
   # new columns need to be added here to be writable through mass assignment
   attr_accessible :username, :email, :password, :password_confirmation
   
@@ -22,6 +24,10 @@ class User < ActiveRecord::Base
     if !friendship.save
       logger.debug "User '#{friend.email}' already exists in the user's friendship list."
     end
+  end
+  
+  def all_flits
+    Flit.find(:all, :conditions => ["user_id in (?)", friends.map(&:id).push(self.id)], :order => "created_at desc")
   end
   
   # login can be either username or email address

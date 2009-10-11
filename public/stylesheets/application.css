@@ -1,7 +1,8 @@
 body {
   background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+  font-family: 'Lucida Grande',sans-serif;
+  font-size: 0.75em;
+  color: #333333;
 }
 
 a img {
@@ -45,6 +46,86 @@ a {
 .fieldWithErrors {
   display: inline;
 }
+
+input.button {
+  background: url(/images/round-btn.gif) top left no-repeat;
+  width: 115px;
+  height: 32px;
+  border: 0px;
+  font-size: 120%;
+  color: #666;
+}
+
+/* FLITS FORM */
+#new_flit_form {
+  width: 521px;
+  margin-bottom: 25px;
+}
+#new_flit_form textarea {
+  width: 521px;
+  height: 44px;
+}
+#new_flit_form h3 {
+  font-weight: normal;
+  font-size: 150%;
+  margin: 0px;
+  padding: 0px 0px 5px 0px;
+}
+#new_flit_form #latest_message {
+  color: #666;
+  font-size: 90%;
+  padding-top: 3px;
+  float: left;
+  width: 360px;
+}
+#new_flit_form #submit_button_container {
+  float: right;
+  width: 160px;
+  text-align: right;
+  padding-top: 3px;
+}
+
+/* FLITS LIST */
+#flits_list {
+  margin: 0px;
+  padding: 0px;
+  width: 521px;
+}
+#flits_list li {
+  list-style: none;
+  padding: 10px 0px;
+  margin: 0px;
+  background-color: #fff;
+  border-bottom: 1px dashed #D2DADA;
+}
+#flits_list li.first {
+  border-top: 1px dashed #D2DADA;
+}
+#flits_list li:hover {
+  background-color: #F7F7F7;
+}
+#flits_list li img {
+  float: left;
+}
+#flits_list li div.flit_message_container {
+  float: left;
+  margin-left: 10px;
+}
+#flits_list li div.flit_message_container a {
+  color: #2276bb;
+  text-decoration: none;
+  font-weight: bold;
+}
+#flits_list li div.flit_message_container div.time_ago {
+  color: #9C9C9C;
+  font-size: 90%;
+  padding-top: 3px;
+}
+
+
+
+
+
 
 #errorExplanation {
   width: 400px;
