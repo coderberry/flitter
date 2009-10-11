@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  message: MyString
+  created_at: 2009-09-06 13:42:25
+
+two:
+  user_id: 1
+  message: MyString
+  created_at: 2009-09-06 13:42:25
