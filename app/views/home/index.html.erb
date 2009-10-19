@@ -1,6 +1,27 @@
+<script type="text/javascript">
+$(function() {
+  $('#flit_message').keyup(function() {
+    var content_length = $(this).val().length;
+    var remaining = 140 - content_length
+    $('#char_count').html(remaining);
+    if (remaining < 21 && remaining > 9) {
+      $('#char_count').removeClass('red');
+      $('#char_count').addClass('dark_red');
+    } else if (remaining <= 9) {
+      $('#char_count').removeClass('dark_red');
+      $('#char_count').addClass('red');
+    } else {
+      $('#char_count').removeClass('dark_red').removeClass('red');
+    }
+  })
+})
+</script>
+
 <%- form_for Flit.new do |f| -%>
   <div id="new_flit_form">
-    <h3>What are you doing?</h3>
+    <h3 style="float: left;">What are you doing?</h3>
+    <h3 id="char_count">140</h3>
+    <div class="clear"></div>
     <%= f.text_area :message %>
     <div id="latest_message">
       <strong>Latest: </strong><%= h @last_flit.message %>
@@ -13,18 +34,4 @@
   </div>
 <%- end -%>
 
-<ul id="flits_list">
-  <% @flits.each do |flit| %>
-    <li<% if @flits.first == flit %> class="first"<% end %>>
-      <%= image_tag flit.user.gravatar_url %>
-      <div class="flit_message_container">
-        <%= link_to flit.user.username %>
-        <%= h flit.message %>
-        <div class="time_ago">
-          <%= distance_of_time_in_words_to_now(flit.created_at) %> ago
-        </div>
-      </div>
-      <div class="clear"></div>
-    </li>
-  <% end %>
-</ul>
+<%= render :partial => "flits_list", :locals => { :flits => @flits }%>

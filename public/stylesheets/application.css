@@ -110,6 +110,7 @@ input.button {
 #flits_list li div.flit_message_container {
   float: left;
   margin-left: 10px;
+  width: 450px;
 }
 #flits_list li div.flit_message_container a {
   color: #2276bb;
@@ -159,4 +160,16 @@ input.button {
 #errorExplanation ul li {
   font-size: 12px;
   list-style: disc;
+}
+#char_count {
+  float: right; 
+  font-size: 23px; 
+  font-weight: bold !important; 
+  color: #aaa;
+}
+.dark_red {
+  color: #5C0002 !important;
+}
+.red {
+  color: #D40D12 !important;
 }

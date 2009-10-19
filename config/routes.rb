@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sessions
   map.resources :users
   map.resources :flits
+  map.user_flits '/:username', :controller => 'home', :action => 'show'
+  map.toggle_follow '/:username/toggle_follow', :controller => 'home', :action => 'toggle_follow'
   map.root :controller => "home"
 
   # The priority is based upon order of creation: first created -> highest priority.

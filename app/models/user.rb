@@ -26,6 +26,17 @@ class User < ActiveRecord::Base
     end
   end
   
+  def remove_friend(friend)
+    friendship = Friendship.find(:first, :conditions => ["user_id = ? and friend_id = ?", self.id, friend.id])
+    if friendship
+      friendship.destroy
+    end
+  end
+  
+  def is_friend?(friend)
+    return self.friends.include? friend
+  end
+  
   def all_flits
     Flit.find(:all, :conditions => ["user_id in (?)", friends.map(&:id).push(self.id)], :order => "created_at desc")
   end
