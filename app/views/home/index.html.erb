@@ -24,8 +24,8 @@ $(function() {
     <div class="clear"></div>
     <%= f.text_area :message %>
     <div id="latest_message">
-      <strong>Latest: </strong><%= h @last_flit.message %>
-      <%= distance_of_time_in_words_to_now(@last_flit.created_at) %> ago
+      <strong>Latest: </strong><%= h last_flit_message %>
+      <%= last_flit_created %>
     </div>
     <div id="submit_button_container">
       <%= f.submit "update", :class => "button" %>
