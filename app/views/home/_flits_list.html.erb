@@ -3,7 +3,7 @@
     <li<% if flits.first == flit %> class="first"<% end %>>
       <%= image_tag flit.user.gravatar_url %>
       <div class="flit_message_container">
-        <%= link_to flit.user.username %>
+        <%= link_to flit.user.username, user_flits_path(flit.user.username) %>
         <%= h flit.message %>
         <div class="time_ago">
           <%= distance_of_time_in_words_to_now(flit.created_at) %> ago

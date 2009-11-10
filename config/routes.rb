@@ -5,7 +5,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sessions
   map.resources :users
   map.resources :flits
+  map.search '/search', :controller => 'home', :action => 'search'
+  map.remove_friend '/remove_friend/:username', :controller => 'home', :action => 'remove_friend'
+  map.following '/following', :controller => 'home', :action => 'following'
   map.user_flits '/:username', :controller => 'home', :action => 'show'
+  map.toggle_follow_via_ajax '/:username/toggle_follow_via_ajax', :controller => 'home', :action => 'toggle_follow_via_ajax'
   map.toggle_follow '/:username/toggle_follow', :controller => 'home', :action => 'toggle_follow'
   map.root :controller => "home"
 

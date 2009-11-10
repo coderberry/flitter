@@ -1,6 +1,8 @@
 body {
-  background-color: #4B7399;
-  font-family: 'Lucida Grande',sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background: #C0DEED url(/images/bg-clouds.png) top left repeat-x;
+  font-family: 'Lucida Grande', sans-serif;
   font-size: 0.75em;
   color: #333333;
 }
@@ -10,7 +12,9 @@ a img {
 }
 
 a {
-  color: #0000FF;
+  color: #2276bb;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .clear {
@@ -19,13 +23,44 @@ a {
   overflow: hidden;
 }
 
-#container {
-  width: 75%;
-  margin: 0 auto;
+#header {
+  width: 815px;
+  margin: 15px auto 0px auto;
+}
+
+#header #logo {
+  float: left;
+  width: 400px;
+}
+
+#header #top_links_container {
+  float: right;
+  width: auto;
   background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
+  padding: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  margin-right: 30px;
+  margin-top: 50px;
+}
+
+#container {
+  width: 715px;
+  margin: 0 auto 25px auto;
+  background-color: #FFF;
+  padding: 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#main {
+  width: 540px;
+  float: left;
+}
+
+#side {
+  width: 160px;
+  float: right;
 }
 
 #flash_notice, #flash_error {
@@ -112,6 +147,15 @@ input.button {
   margin-left: 10px;
   width: 450px;
 }
+#flits_list li div.flit_message_container h3 {
+  margin: 0px;
+  font-size: 16px;
+}
+#flits_list li div.button_container {
+  width: 135px;
+  text-align: right;
+  float: right;
+}
 #flits_list li div.flit_message_container a {
   color: #2276bb;
   text-decoration: none;
@@ -172,4 +216,59 @@ input.button {
 }
 .red {
   color: #D40D12 !important;
+}
+
+#my_info_container {}
+#my_info_container img {
+  float: left;
+}
+#my_info_container .contents {
+  font-family: Helvetica Neue,Helvetica,sans-serif;
+  font-weight: bold;
+  color: #333333;
+  float: left;
+  padding-left: 5px;
+  font-size: 13px;
+  line-height: 14px;
+}
+#my_info_container .contents .small {
+  font-size: 12px;
+  font-weight: normal;
+}
+#side_content_container {
+  margin-top: 15px;
+}
+#side_content_container h4 {
+  margin: 2px 0px;
+}
+
+#search_bar {
+  margin-top: 15px;
+  height: 25px;
+  width: 160px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #999999;
+}
+#search_bar input.text {
+  float: left;
+  width: 125px;
+  border: 0px;
+  height: 23px;
+  font-size: 15px;
+  line-height: 22px;
+  padding-left: 3px;
+  padding-top: 2px;
+  background-color: transparent;
+}
+#search_bar #search_submit_button {
+  background: url('/images/nav_search_submit.png') 0 0 no-repeat;
+  border-left: 1px solid #999;
+  float: right;
+  width: 28px;
+  height: 25px;
+}
+#search_bar #search_submit_button:hover {
+  background-position: 0 -25px;
+  cursor: pointer;
 }
