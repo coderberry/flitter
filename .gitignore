@@ -1,0 +1,13 @@
+.DS_Store
+config/database.yml
+coverage/*
+doc/api
+doc/app
+db/*.db
+db/*.sqlite3
+db/schema.rb
+log/*.log
+log/*.pid
+public/javascripts/all.js
+public/stylesheets/all.js
+tmp/**/*
