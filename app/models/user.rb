@@ -19,6 +19,20 @@ class User < ActiveRecord::Base
   has_many :flits, :dependent => :destroy
   has_many :friendships
   has_many :friends, :through => :friendships
+
+  # ramonrails: added a few named_scope to ease out things
+  # result: everyone except the user object/array
+  # usage:  User.excluding(current_user)
+  #         User.excluding(User.like("ram"))
+  named_scope :excluding, lambda { |*excluded|
+    { :conditions => (excluded.blank? ? nil : ["email NOT IN (?)", excluded.collect(&:email)]) }
+  }
+  # results contain search_string either in name or email
+  # usage: User.like('ram')
+  named_scope :like, lambda { |*args|
+    query = args.flatten.first
+    {:conditions => ["username like ? OR email like ?", "%#{query}%", "%#{query}%"]}
+  }
   
   def friends_of
     Friendship.find(:all, :conditions => ["friend_id = ?", self.id]).map{|f|f.user}
@@ -45,10 +59,12 @@ class User < ActiveRecord::Base
   def all_flits
     Flit.find(:all, :conditions => ["user_id in (?)", friends.map(&:id).push(self.id)], :order => "created_at desc")
   end
-  
-  def self.find_by_search_query(q)
-    User.find(:all, :conditions => ["username like ? OR email like ?", "%#{q}%", "%#{q}%"])
-  end
+
+  # ramonrails: code shifted to named_scope above
+  #
+  # def self.find_by_search_query(q, excluding_this_user)
+  #   User.find(:all, :conditions => ["username like ? OR email like ?", "%#{q}%", "%#{q}%"])
+  # end
   
   # login can be either username or email address
   def self.authenticate(login, pass)

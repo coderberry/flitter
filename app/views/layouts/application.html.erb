@@ -10,7 +10,7 @@
   <body>
     <div id="header">
       <div id="logo">
-        <%= image_tag("logo.png", :alt => "Flitter") %>
+        <%= link_to( image_tag("logo.png", :alt => "Flitter"), root_path) %>
       </div>
       <div id="top_links_container">
         <% if current_user %>

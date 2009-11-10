@@ -48,8 +48,9 @@ class HomeController < ApplicationController
   end
   
   def search
+    # ramonrails: cannot follow self. can you?
     @q = params[:q]
-    @friends = User.find_by_search_query(@q)
+    @friends = User.excluding(current_user).like(@q) # find_by_search_query(@q, current_user)
   end
   
 end
