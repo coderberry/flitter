@@ -1,0 +1,38 @@
+<ul id="flits_list">
+  <% @friends.each do |friend| %>
+    <li<% if @friends.first == friend %> class="first"<% end %> id="<%= friend.username %>">
+      <%= image_tag friend.gravatar_url %>
+      <div class="flit_message_container" style="width: 305px;">
+        <h3><%= link_to friend.username, user_flits_path(friend.username) %></h3>
+        <% if friend.flits.length > 0 %>
+          <%= h friend.flits.last.message %>
+          <%= distance_of_time_in_words_to_now(friend.flits.last.created_at) %> ago
+        <% end %>
+      </div>  
+      <div class="button_container">
+        <input type="button" name="<%= friend.username %>" id="btn_<%= friend.username %>" class="button ajax_button" 
+          value="<% if current_user.is_friend? friend %>Stop Following<% else %>Follow<% end %>"/>
+      </div>
+      <div class="clear"></div>
+    </li>
+  <% end %>
+</ul>
+
+<script type="text/javascript">
+$(function() {
+  $('.ajax_button').click(function() {
+    $.ajax({
+       type: "POST",
+       url: "/" + $(this).attr('name') + "/toggle_follow_via_ajax",
+       success: function(msg){
+         elm = $('#btn_' + msg);
+         if (elm.val() == "Stop Following") {
+           elm.val("Follow");
+         } else {
+           elm.val("Stop Following");
+         }
+       }
+     });
+  })
+});
+</script>

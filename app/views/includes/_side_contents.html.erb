@@ -1,0 +1,27 @@
+<div id="my_info_container">
+  <%= link_to image_tag(current_user.gravatar_url(:size => 30), :border => 0), user_flits_path(current_user.username) %>
+  <div class="contents">
+    <%= link_to current_user.username, user_flits_path(current_user.username) %><br/>
+    <span class="small"><%= pluralize(current_user.flits.length, "Flit") %></span>
+  </div>
+</div>
+<div class="clear"></div>
+
+<div id="side_content_container">
+  <h4><%= link_to "#{current_user.friends.count} following", following_path %></h4>
+  <h4><%= pluralize(current_user.friends_of.count, "follower") %></h4>
+</div>
+
+<% form_tag search_path do %>
+<div id="search_bar">
+  <%= text_field_tag :q, @q, :class => "text" %>
+  <div id="search_submit_button">&nbsp;</div>
+</div>
+<% end %>
+
+<div id="side_content_container">
+  <h4>Followers</h4>
+  <% current_user.friends_of.each do |friend| %>
+    <%= link_to image_tag(friend.gravatar_url(:size => 25), :border => 0, :alt => friend.username, :title => friend.username), user_flits_path(friend.username) %>
+  <% end %>
+</div>
