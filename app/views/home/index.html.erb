@@ -24,8 +24,7 @@ $(function() {
     <div class="clear"></div>
     <%= f.text_area :message %>
     <div id="latest_message">
-      <strong>Latest: </strong><%= h last_flit_message %>
-      <%= last_flit_created %>
+      <strong>Latest: </strong><%= h( "#{last_flit_message} #{last_flit_created}") %>
     </div>
     <div id="submit_button_container">
       <%= f.submit "update", :class => "button" %>
