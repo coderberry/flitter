@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
     Flit.find(:all, :conditions => ["user_id in (?)", friends.map(&:id).push(self.id)], :order => "created_at desc")
   end
 
-  # ramonrails: code shifted to named_scope above
+  # : code shifted to named_scope above
   #
   # def self.find_by_search_query(q, excluding_this_user)
   #   User.find(:all, :conditions => ["username like ? OR email like ?", "%#{q}%", "%#{q}%"])
